@@ -93,6 +93,14 @@ df_filtered = df_clean.filter(~col("clean_text").rlike(spoiler_regex)) \
 df_final = df_filtered.withColumn("label", col("star_rating").cast("string")) \
                       .select("clean_text", "label")
 
+# C) Undersampling for class balance
+label_counts = df_final.groupBy("label").count().collect()
+count_dict = {row["label"]: row["count"] for row in label_counts}
+min_count = min(count_dict.values())
+fractions = {label: min_count / count for label, count in count_dict.items()}
+# Apply Stratified Undersampling
+df_final = df_final.sampleBy("label", fractions, seed=42)
+
 # Repartition and persist the final DataFrame
 df_final = df_final.repartition(64)
 df_final.persist(StorageLevel.MEMORY_AND_DISK)
