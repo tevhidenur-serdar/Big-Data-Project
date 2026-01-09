@@ -43,24 +43,22 @@ This repository contains a scalable sentiment analysis pipeline designed to proc
 ### 2. Build the Docker Image
 The image is designed to be a "slim" runtime environment, containing only the OS, Java 17, and Python dependencies.
 ```bash
-docker build -t amazon-bert-nlp .
+docker build -t big_data .
 ```
 
 ### 3. Run with Volume Mounting
 To keep the setup efficient, we mount the current directory to the container's /app folder. This allows the script to access the dataset and JAR file from your host machine and save the trained model back to your local storage.
 ```bash
-docker run -it --name amazon_nlp_run \
+docker run -it --name big_data \
   -v "$(pwd)":/app \
   -e SPARK_MEM=16g \
-  amazon-bert-nlp
+  big_data
 ```
 Note: Use -e SPARK_MEM to adjust the RAM allocation based on your hardware (e.g., 32g, 64g).
 
 ## How It Works
 
 The system follows a robust data engineering and machine learning workflow to handle large-scale text data:
-
-
 
 1.  **Smart Extraction & Verification:** The script first checks if the raw `.tsv` file exists in the working directory. If missing, it automatically extracts it from the `.zip` archive. This minimizes manual setup and saves disk space during transport.
 
@@ -70,8 +68,6 @@ The system follows a robust data engineering and machine learning workflow to ha
     - **SentenceDetector:** Segments text into individual sentences for more granular BERT analysis.
     - **BertSentenceEmbeddings:** Utilizes the `sent_small_bert_L8_512` model to generate high-quality 512-dimensional vector representations of sentences.
     - **ClassifierDL:** A TensorFlow-based Deep Learning classifier trained on the BERT embeddings to predict star ratings (1 to 5).
-
-
 
 3.  **Data Persistence & Optimization:** To prevent Spark's "lazy evaluation" from recalculating the heavy BERT embeddings multiple times, we use `persist(StorageLevel.MEMORY_AND_DISK)`. An explicit `count()` call forces the data into RAM/Disk before the training starts, ensuring stability and performance.
 
@@ -85,8 +81,6 @@ The script splits the data into **80% training** and **20% testing**. Upon compl
 - **Recall:** Ability to find all positive instances.
 - **F1-Score:** The harmonic mean of precision and recall.
 - **Overall Accuracy:** Performance across all star rating classes.
-
-
 
 ---
 
