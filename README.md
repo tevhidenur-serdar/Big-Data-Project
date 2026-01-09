@@ -41,8 +41,7 @@ This repository contains a scalable sentiment analysis pipeline designed to proc
 - The Spark NLP assembly JAR (`spark-nlp-assembly-5.5.1.jar`) placed in the root directory.
 
 Due to file size limits, please download the following files manually and place them in the project root:
-- **Dataset (.zip):** [Download Amazon Reviews Books v1.02]([DRIVE_LINKINIZ_BURAYA](https://drive.google.com/drive/folders/1wGIDl-eY-eBLQTzTM8oSYXSP4X5OkagH))
-- **Spark NLP JAR:** [Download Spark NLP Assembly 5.5.1]([DRIVE_LINKINIZ_BURAYA](https://drive.google.com/drive/folders/1wGIDl-eY-eBLQTzTM8oSYXSP4X5OkagH))
+**Dataset (.zip) and Spark NLP JAR:** [Download Amazon Reviews Books v1.02 and Spark NLP Assembly 5.5.1][https://drive.google.com/drive/folders/1wGIDl-eY-eBLQTzTM8oSYXSP4X5OkagH]
 
   
 ### 2. Build the Docker Image
