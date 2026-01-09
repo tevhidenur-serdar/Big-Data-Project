@@ -40,8 +40,7 @@ This repository contains a scalable sentiment analysis pipeline designed to proc
 - The Amazon dataset (`amazon_reviews_us_Books_v1_02.tsv.zip`) placed in the root directory.
 - The Spark NLP assembly JAR (`spark-nlp-assembly-5.5.1.jar`) placed in the root directory.
 
-Due to file size limits, please download the following files manually and place them in the project root:
-**Dataset (.zip) and Spark NLP JAR:** [Download Link](https://drive.google.com/drive/folders/1wGIDl-eY-eBLQTzTM8oSYXSP4X5OkagH)
+Due to file size limits, please download the following files manually and place them in the project root:[Download Link](https://drive.google.com/drive/folders/1wGIDl-eY-eBLQTzTM8oSYXSP4X5OkagH)
 
   
 ### 2. Build the Docker Image
