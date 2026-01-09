@@ -33,7 +33,7 @@ This repository contains a scalable sentiment analysis pipeline designed to proc
 └── amazon_reviews_us_Books_v1_02.tsv.zip # Dataset (Mount via Volume)
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Prerequisites
 - [Docker](https://www.docker.com/) installed on your machine.
