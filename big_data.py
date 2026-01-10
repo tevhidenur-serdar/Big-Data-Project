@@ -77,7 +77,7 @@ df = spark.read.option("header", "true") \
     .csv(tsv_file)
 
 # Sample a small fraction of the data for testing
-df = df.sample(fraction=0.0001, seed=42)
+#df = df.sample(fraction=0.01, seed=42)
 
 # A) Null removal
 df_clean = df.dropna(subset=["review_body", "star_rating"])
