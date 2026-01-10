@@ -53,7 +53,7 @@ docker build -t big_data .
 To keep the setup efficient, we mount the current directory to the container's /app folder. This allows the script to access the dataset and JAR file from your host machine and save the trained model back to your local storage.
 ```bash
 docker run -it --name big_data \
-  -v "$(pwd)":/app \
+  -v "$(pwd):/app" \
   -e SPARK_MEM=16g \
   big_data
 ```
